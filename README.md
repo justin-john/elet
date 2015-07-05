@@ -46,7 +46,7 @@ Read more about [config](https://github.com/justin-john/elet/blob/master/docs/ho
 
 ##### Sample controller File (controller/articles.js)
 ```javascript
-exports.view = (function () {
+exports.view = function () {
     var locals = {
         title: 'Index',
         authors: ['Paul', 'Jim', 'Jane'],
