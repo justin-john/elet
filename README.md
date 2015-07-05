@@ -61,7 +61,7 @@ See more details about [request object injected methods and properties](https://
 
 By using above files we can start to create an application.
 
-In examples folder of this repo, there is an example usage of elet in an application.
+In examples folder of this repo, there is an example usage of elet in an application. Please refer [doc](https://github.com/justin-john/elet/blob/master/examples/README.md) for set up the example application.
 
 ### Guide
 
