@@ -1,0 +1,17 @@
+{
+  "name": "lite",
+  "description": "A demo app in lite framework.",
+  "main": "app.js",
+  "version": "0.0.1",
+  "private": true,
+  "author": { "name": "Justin John Mathews", "email": "justinjohnmathews@gmail.com" },
+  "dependencies": {
+        "swig": "*"
+        , "ejs": "*"
+        , "jade": "*"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

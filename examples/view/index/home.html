@@ -1,0 +1,38 @@
+{% extends '../element/layout.html' %}
+
+{% block title %}Angular Node Home{% endblock %}
+
+{% block head %}
+  {% parent %}
+{% endblock %}
+
+{% block content %}
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Name</th>
+        <th>Header</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for author in authors %}
+
+      <tr {% if loop.last %} class="last"{% endif %}>
+        <td>{{ author }}</td>
+        <td>{{ author }}</td>
+        <td>{{ author }}</td>
+      </tr>
+
+    {% endfor %}
+
+
+    </tbody>
+  </table>
+
+
+
+{% endblock %}        

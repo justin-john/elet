@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}Angular Node Home{% endblock %}
+
+{% block head %}
+  {% parent %}
+  <link rel="stylesheet" href="custom.css">
+{% endblock %}
+
+{% block content %}
+<h1>Your are entered in add page.</h1>
+<ul>
+{% for author in authors %}
+  <li{% if loop.first %} class="first"{% endif %}>
+    {{ author }}
+  </li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,146 @@
+Guide
+=====
+
+### Config
+
+```javascript
+elet.config({
+    templateEngine: 'swig', // [REQUIRED] - 'jade' or 'ejs' can be used. No Defaults settings 
+    controllerDir: __dirname + '/controller', // [OPTIONAL] - Declare controller directory, defaults to "/controller"
+    viewDir: __dirname + '/view', // [OPTIONAL] - Declare view directory, defaults to "/view"
+    viewExtension: 'html' // [OPTIONAL] - Must set this property in order to use html extension in view files instead of 'swig' or 'ejs' extension.
+    errorFilePath: __dirname + '/view/error.html', // [OPTIONAL] - Declare a custom error html file to override default error content
+    debugMode: true // [OPTIONAL] - Errors and waring are logged, defaults to false
+});
+```
+Above configs can used before elet initialisation.
+
+### Accessing request parameters
+
+The request object is injected with some helpful methods and properties in elet core. The request argument in action
+method should posses all these methods are properties. All these methods and properties are added in one property in
+request object called "params". So `request.params` can be used in action method
+```javascript
+var _index = function(req, res) { /* "req" as request and "res" as response object arguments */ };
+```
+The method can access req.params to get different properties in request.
+
+
+**request.params.controller** The controller name
+
+**request.params.action** The action method name
+
+**request.params.pass** The passed argument are accessed. For ex "/articles/view/1", here 1 will be accesed by this property.
+
+**request.params.isAjax** Check ajax or not
+
+**request.params.is** Inspecting the request, check request methods "GET", "POST" etc. The method receives an argument.
+There are several built-in detectors that you can use:
+
+* **is('get')** Check to see whether the current request is a GET.
+
+* **is('put')** Check to see whether the current request is a PUT.
+
+* **is('post')** Check to see whether the current request is a POST.
+
+* **is('delete')** Check to see whether the current request is a DELETE.
+
+* **is('head')** Check to see whether the current request is HEAD.
+
+* **is('options')** Check to see whether the current request is OPTIONS.
+
+* **is('ajax')** Check to see whether the current request came with X-Requested-With = XMLHttpRequest.
+
+
+### Sample App Structure
+```
+  application root/
+        ├── css/
+        │   ├── bootstrap.css
+        │   └── bootstrap-theme.min.css
+        ├── js/
+        │   ├── bootstrap.js
+        │   └── bootstrap.min.js
+        ├── view/
+        │   ├── articles/
+        │   │   ├── index.html
+        │   │   └── view.html
+        │   └── index/
+        │        ├── index.html
+        │        └── view.html
+        ├── controller/
+        │   ├── articles.js
+        │   └── index.js
+        └── app.js
+```
+
+###Sample Files
+##### app.js
+```javascript
+var http = require('http');
+var elet = require('../lib/elet');
+
+elet.config({
+    templateEngine: 'swig',
+    controllerDir: __dirname + '/controller',
+    viewsMap: __dirname + '/view',
+    viewExtension: 'html',
+    debugMode: true
+});
+
+http.createServer(function (request, response) {
+    elet.init(request, response);
+}).listen(3000);
+console.log('Server running at http://127.0.0.1:3000/');
+```
+
+##### articles.js
+```javascript
+module.exports = (function () {
+    var _index = function(req, res) {
+        var locals = {
+            title: 'Index',
+            test: 'test cvc justin',
+            users: ['Gewrt', 'Jim', 'Jane'],
+            pagename: 'awesome people locals',
+            authors: ['Paul', 'Jim', 'Jane'],
+            params: JSON.stringify(req.params)
+        };
+        res.render('index', locals);
+
+    },_add = function(req, res) {
+        var locals = {
+            title: 'A JSON format data returned, Normally used in AJAX response data',
+            pagename: 'awesome people locals',
+            authors: ['Paul', 'Jim', 'Jane'],
+            params: req.params
+        };
+		res.json(locals);
+    }, _contact = function(req, res) {
+        var locals = {
+            title: 'Contact',
+            pagename: 'awesome people',
+            authors: ['Justin', 'John', 'Mathews'],
+            params: req.params
+        };
+        var data = res.getParsedFileData('view/index/home.html', locals);
+        res.resWriteEnd(200, 'text/html', data, 'utf-8');
+    };
+
+    return {
+        index: _index,
+        add: _add,
+        test: _test,
+        contact: _contact
+    }
+})();
+```
+This controller file handles following URL's routes.
+
+ _`/articles`_ or _`/articles/index`_:   Hit articles controller and call action method "index". The `res.render` will render html from `view/articles/index.html`.
+ 
+ _`/articles/add`_:   Hit articles controller and call action method "add". The `res.json` will return JSON response.
+ 
+ _`/articles/test`_:   Hit articles controller and call action method "test". The `res.json` will return JSON response.
+ 
+ _`/articles/contact`_:  Hit articles controller and call action method "contact". The `res.resWriteEnd` will return response with any content type. Here 'text/html' or plain html as content type.

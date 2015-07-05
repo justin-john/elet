@@ -1,0 +1,42 @@
+{% extends '../element/layout.html' %}
+
+{% block title %}Angular Node Home{% endblock %}
+
+{% block head %}
+  {% parent %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+<h2 class="sub-header">Display data from BE</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Header</th>
+        <th>Header</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for user in users %}
+
+      <tr {% if loop.first %} class="first"{% endif %}>
+        <td>{{ user }}</td>
+        <td>{{ user }}</td>
+        <td>{{ user }}</td>
+      </tr>
+
+    {% endfor %}
+
+
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

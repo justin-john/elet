@@ -1,0 +1,37 @@
+{
+  "name": "elet",
+  "description": "CakePHP inspired microframework in Node.js",
+  "keywords": [
+    "framework",
+    "node.js",
+    "REST API",
+    "library"
+  ],
+  "maintainers": "Justin John Mathews <justinjohnmathews@gmail.com>",
+  "homepage": "https://github.com/justin-john/elet",
+  "version": "0.0.1",
+  "author": {
+    "name": "Justin John Mathews",
+    "email": "justinjohnmathews@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Justin John Mathews",
+      "email": "justinjohnmathews@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justin-john/elet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/justin-john/elet/issues"
+  },
+  "main": "./lib/elet",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "license": "MIT"
+}
