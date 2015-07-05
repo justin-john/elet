@@ -130,7 +130,6 @@ module.exports = (function () {
     return {
         index: _index,
         add: _add,
-        test: _test,
         contact: _contact
     }
 })();
@@ -140,7 +139,5 @@ This controller file handles following URL's routes.
  _`/articles`_ or _`/articles/index`_:   Hit articles controller and call action method "index". The `res.render` will render html from `view/articles/index.html`.
  
  _`/articles/add`_:   Hit articles controller and call action method "add". The `res.json` will return JSON response.
- 
- _`/articles/test`_:   Hit articles controller and call action method "test". The `res.json` will return JSON response.
  
  _`/articles/contact`_:  Hit articles controller and call action method "contact". The `res.resWriteEnd` will return response with any content type. Here 'text/html' or plain html as content type.
