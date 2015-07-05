@@ -21,7 +21,7 @@ http://example.com/controller/action/param1/param2/param3
 ```
 
 A very basic Elet app requires `app.js` to initialise elet module and controller file, which receives route control.
-We consider a sample url route "http://example.com/articles/view".
+We consider a sample url route "http://example.com/articles/view" .
 
 #####  app.js
 ```javascript
@@ -44,22 +44,20 @@ The elet application will listen on port 3000.
 The `elet` will use some configs to set the application. It will initialise the template engine, controller and view directories, custom error file etc in application. The elet supports [swig](http://paularmstrong.github.io/swig), [jade](http://jade-lang.com/) and [ejs](http://embeddedjs.com/) template engines. The npm module of template engine needs to required/installed in your application.
 Read more about [config](https://github.com/justin-john/elet/blob/master/docs/home.md#config) on guide.
 
-##### Sample controller File (articles.js)
+##### Sample controller File (controller/articles.js)
 ```javascript
 exports.view = (function () {
-    var _index = function(req, res) {
-        var locals = {
-            title: 'Index',
-            authors: ['Paul', 'Jim', 'Jane'],
-            params: JSON.stringify(req.params)
-        };
-        res.render('index', locals);
+    var locals = {
+        title: 'Index',
+        authors: ['Paul', 'Jim', 'Jane'],
+        params: JSON.stringify(req.params)
     };
+    res.render('index', locals);
 }
 ```
 
-The URL route "http://example.com/articles/view" will hit articles controller(articles.js) and call view method. The request(`req`) argument provide certain useful methods and properties in view method in `req.params`.
-See more about [request object injected methods and properties](https://github.com/justin-john/elet/blob/master/docs/home.md#accessing-request-parameters).
+The URL route "http://example.com/articles/view" will hit articles controller(articles.js) and call view method. The request(`req`) argument provide certain useful methods and properties in view method in `req.params`. The `view` method will render a template "index" from "view/articles" directory by calling `res.render` method.
+See more details about [request object injected methods and properties](https://github.com/justin-john/elet/blob/master/docs/home.md#accessing-request-parameters) and application [structure](https://github.com/justin-john/elet/blob/master/docs/home.md#sample-app-structure).
 
 By using above files we can start to create an application.
 

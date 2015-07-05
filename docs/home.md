@@ -57,10 +57,10 @@ There are several built-in detectors that you can use:
   application root/
         ├── css/
         │   ├── bootstrap.css
-        │   └── bootstrap-theme.min.css
+        │   └── application.css
         ├── js/
         │   ├── bootstrap.js
-        │   └── bootstrap.min.js
+        │   └── application.js
         ├── view/
         │   ├── articles/
         │   │   ├── index.html
