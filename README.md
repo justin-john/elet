@@ -82,7 +82,7 @@ When user access a route(request url) like "localhost:3000/index/contact", the r
 
 ### API Reference
 
-#####response.render(view, [locals object]);
+##### response.render(view, [locals object]);
 Renders a view and sends the rendered HTML string to the client.
 Parameters:
 
@@ -91,10 +91,24 @@ view, The template name that needs to render. If skipped or give locals as first
 locals, an object whose properties define local variables for the view.
 
 If both parameters are omitted. The method will look in view directory with action named file is present and automatically render the template.
+
 #####response.json([locals object])
 Sends a JSON response
+
 #####response.resWriteEnd(code, contentType, data, encode)
-Sends a response with respect to passed arguments  status code, content type, data and encode. This method can be used to generate response with any content type as "application/json", "application/xml" etc.
+Sends a response with respect to passed arguments  http status code, content type, data and encode. This method can be used to generate response with any content type like "application/json", "application/xml" etc.
+
+Parameters:
+
+code, It will be http status code. The code "200" for status "OK", "404" for "Not found" etc.
+
+contentType, The content type like "application/json", "application/xml" etc can be passed.
+
+data, This argument will be fetched data that needs to be passed to response.
+
+encode, Optional. This is a character encoding.  Defaults to `utf8`.
+
+
 #####response.getParsedFileData(path, [locals object], encode)
 This method returns data parsed by object to create dynamic file content from template engines. The arguments will `path`
 for file path, `locals` the objects which parse in file for creating dynamic file and `encoding` is optional, which defaults
