@@ -82,7 +82,7 @@ When user access a route(request url) like "localhost:3000/index/contact", the r
 
 ### API Reference
 
-##### response.render(view, [locals object]);
+##### response.render(view, [locals object])
 Renders a view and sends the rendered HTML string to the client.
 Parameters:
 
