@@ -122,8 +122,9 @@ Visit additional documentation [here](https://github.com/justin-john/elet/blob/m
 
 ### Contributing
 
-Please have look in Elet and let me know how I can improve it. Your suggestion will be highly appreciated. If any one of you like to contribute with your ideas, please do not hesitate to [contact me](justinjohnmathews@gmail.com)
-or create an [issue](https://github.com/justin-john/elet/issues) or make a [pull request](https://github.com/justin-john/elet/pulls) in repository.
+Please have look in Elet and let me know how I can improve it. Your suggestion will be highly appreciated. If any one of you like to contribute with your ideas, please do not hesitate to
+create an [issue](https://github.com/justin-john/elet/issues) or make a [pull request](https://github.com/justin-john/elet/pulls) in repository.
+If you like to contact me, please come at <justinjohnmathews@gmail.com>.
 
 ## License
 
