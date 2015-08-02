@@ -13,7 +13,7 @@ elet.config({
     debugMode: true // [OPTIONAL] - Errors and waring are logged, defaults to false
 });
 ```
-Above configs can used before elet initialisation.
+Above configs can used before elet initialisation. 
 
 ### Accessing request parameters
 
@@ -29,6 +29,9 @@ The method can access req.params to get different properties in request.
 **request.params.controller** The controller name
 
 **request.params.action** The action method name
+
+**request.params.data** Form data can be accessed through this property. We can use this property to access
+ Form data in POST/PUT/DELETE methods as well as querystring in GET method.
 
 **request.params.pass** The passed argument are accessed. For ex "/articles/view/1", here 1 will be accesed by this property.
 
@@ -108,7 +111,7 @@ module.exports = (function () {
         };
         res.render('index', locals);
 
-    },_add = function(req, res) {
+    }, _add = function(req, res) {
         var locals = {
             title: 'A JSON format data returned, Normally used in AJAX response data',
             pagename: 'awesome people locals',
@@ -116,6 +119,15 @@ module.exports = (function () {
             params: req.params
         };
 		res.json(locals);
+    }, _swigtojade = function(req, res) {
+        var controllerData = {
+            title: 'Test',
+            pagename: 'awesome peoplexz',
+            authors: ['Paul', 'Jim', 'Jane'],
+            params: req.params
+        };
+        /* Override default template engine to another */
+        res.render('home', controllerData, 'jade');
     }, _contact = function(req, res) {
         var locals = {
             title: 'Contact',
@@ -130,6 +142,7 @@ module.exports = (function () {
     return {
         index: _index,
         add: _add,
+        swigtojade: _swigtojade,
         contact: _contact
     }
 })();

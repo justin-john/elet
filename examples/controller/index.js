@@ -25,7 +25,16 @@ module.exports = (function () {
             authors: ['Paul', 'Jim', 'Jane'],
             params: req.params
         };
-    }, _contact = function(req, res) { 
+    }, _swigtojade = function(req, res) {
+        var controllerData = {
+            title: 'Test',
+            pagename: 'awesome peoplexz',
+            authors: ['Paul', 'Jim', 'Jane'],
+            params: req.params
+        };
+        /* Override default template engine to another */
+        res.render('home', controllerData, 'jade');
+    }, _contact = function(req, res) {
         var locals = {
             title: 'Contact',
             pagename: 'awesome people',
@@ -40,6 +49,7 @@ module.exports = (function () {
         index: _index,
         add: _add,
         test: _test,
+        swigtojade: _swigtojade,
         contact: _contact
     }
 })();

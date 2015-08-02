@@ -1,6 +1,6 @@
 
 var http = require('http');
-var elet = require('../lib/elet');
+var elet = require('elet');
 
 elet.config({
     templateEngine: 'swig',

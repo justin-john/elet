@@ -63,10 +63,6 @@ By using above files we can start to create an application.
 
 In examples folder of this repo, there is an example usage of elet in an application. Please refer [doc](https://github.com/justin-john/elet/blob/master/examples/README.md) for set up the example application.
 
-### Guide
-
-Visit [docs](https://github.com/justin-john/elet/blob/master/docs/home.md).
-
 ### Working of elet
 
 When user access a route(request url) like "localhost:3000/index/contact", the request first passes to "index" controller and call action method "contact". The action method then call `response.render` method to render a view.
@@ -82,7 +78,7 @@ When user access a route(request url) like "localhost:3000/index/contact", the r
 
 ### API Reference
 
-##### response.render(view, [locals object])
+##### response.render(view, [locals object], templateEngine)
 Renders a view and sends the rendered HTML string to the client.
 Parameters:
 
@@ -90,7 +86,12 @@ view, The template name that needs to render. If skipped or give locals as first
 
 locals, an object whose properties define local variables for the view.
 
-If both parameters are omitted. The method will look in view directory with action named file is present and automatically render the template.
+templateEngine, a string used render with different template engine than config defined default template engine. If swig is
+default template engine in application then this property to override to jade/ejs template engine only for
+corresponding request. If templateEngine is given, then we must give all other arguments that is view string and locals
+object in response.render method. Remember, this templateEngine given must be required before using in application.
+
+If all arguments are omitted, the method will look in view directory with action named file is present and automatically render the template.
 
 #####response.json([locals object])
 Sends a JSON response
@@ -114,10 +115,15 @@ This method returns data parsed by object to create dynamic file content from te
 for file path, `locals` the objects which parse in file for creating dynamic file and `encoding` is optional, which defaults
 to `utf8` encoding.
 
-### Relases Notes
+### Additional Documentation
 
-Want to improve the elet, please don’t hesitate to fork and make a [Pull Request](https://github.com/justin-john/elet/pulls). If you have any questions, thoughts, concerns or feedback, please don't hesitate to create an [issue](https://github.com/justin-john/elet/issues).
-Your suggestions are always welcome!
+Visit additional documentation [here](https://github.com/justin-john/elet/blob/master/docs/home.md).
+
+
+### Contributing
+
+Please have look in Elet and let me know how I can improve it. Your suggestion will be highly appreciated. If any one of you like to contribute with your ideas, please do not hesitate to [contact me](justinjohnmathews@gmail.com)
+or create an [issue](https://github.com/justin-john/elet/issues) or make a [pull request](https://github.com/justin-john/elet/pulls) in repository.
 
 ## License
 
