@@ -59,7 +59,7 @@ exports.view = function () {
 ```
 
 The URL route "http://example.com/articles/view" will hit articles controller(articles.js) and call view method. The request(`req`) argument provide certain useful methods and properties in view method in `req.params`. The `view` method will render a template "index" from "view/articles" directory by calling `res.render` method.
-See more details about [request object injected methods and properties](https://github.com/justin-john/elet/blob/master/docs/home.md#accessing-request-parameters) and application [structure](https://github.com/justin-john/elet/blob/master/docs/home.md#sample-app-structure).
+See more details about [request object injected methods and properties](https://github.com/justin-john/elet/blob/master/docs/home.md#accessing-request-parameters) and [application structure](https://github.com/justin-john/elet/blob/master/docs/home.md#sample-app-structure).
 
 By using above files we can start to create an application.
 
@@ -124,7 +124,7 @@ If you like to contact me, please come at <justinjohnmathews@gmail.com>.
 
 ### Notes
 
-The *v0.2.0* have made change in application structure which was existed in *v0.1.x*.
+The *v0.2.0* have made change in [application structure](https://github.com/justin-john/elet/blob/master/docs/home.md#sample-app-structure) which was existed in *v0.1.x*.
 
 
 ## License
