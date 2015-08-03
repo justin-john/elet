@@ -32,6 +32,7 @@ elet.config({
     templateEngine: 'swig',
     controllerDir: __dirname + '/controller',
     viewDir: __dirname + '/view',
+    webrootDir: __dirname + '/webroot',
     viewExtension: 'html'
 });
 
@@ -41,7 +42,8 @@ http.createServer(function (request, response) {
 ```
 
 The elet application will listen on port 3000.
-The `elet` will use some configs to set the application. It will initialise the template engine, controller and view directories, custom error file etc in application. The elet supports [swig](http://paularmstrong.github.io/swig), [jade](http://jade-lang.com/) and [ejs](http://embeddedjs.com/) template engines. The npm module of template engine needs to required/installed in your application.
+The `elet` will use some configs to set the application. It will set config for the template engine and controller, view, webroot directory paths, custom error file path etc in application. The elet supports [swig](http://paularmstrong.github.io/swig), [jade](http://jade-lang.com/) and [ejs](http://embeddedjs.com/) template engines.
+The npm module of template engine needs to required/installed in your application. Webroot Directory serve as holding places for CSS stylesheets, images, JavaScript files etc and statically served files.
 Read more about [config](https://github.com/justin-john/elet/blob/master/docs/home.md#config) on guide.
 
 ##### Sample controller File (controller/articles.js)
@@ -80,13 +82,11 @@ When user access a route(request url) like "localhost:3000/index/contact", the r
 
 ##### response.render(view, [locals object], templateEngine)
 Renders a view and sends the rendered HTML string to the client.
+
 Parameters:
-
-view, The template name that needs to render. If skipped or give locals as first argument in render. The method will look in view directory with action named file is present and automatically render the template.
-
-locals, an object whose properties define local variables for the view.
-
-templateEngine, a string used render with different template engine than config defined default template engine. If swig is
+* View: The template name that needs to render. If skipped or give locals as first argument in render. The method will look in view directory with action named file is present and automatically render the template.
+* Locals: An object whose properties define local variables for the view.
+* TemplateEngine: A string used render with different template engine than config defined default template engine. If swig is
 default template engine in application then this property to override to jade/ejs template engine only for
 corresponding request. If templateEngine is given, then we must give all other arguments that is view string and locals
 object in response.render method. Remember, this templateEngine given must be required before using in application.
@@ -100,14 +100,10 @@ Sends a JSON response
 Sends a response with respect to passed arguments  http status code, content type, data and encode. This method can be used to generate response with any content type like "application/json", "application/xml" etc.
 
 Parameters:
-
-code, It will be http status code. The code "200" for status "OK", "404" for "Not found" etc.
-
-contentType, The content type like "application/json", "application/xml" etc can be passed.
-
-data, This argument will be fetched data that needs to be passed to response.
-
-encode, Optional. This is a character encoding.  Defaults to `utf8`.
+* Code: It will be http status code. The code "200" for status "OK", "404" for "Not found" etc.
+* ContentType: The content type like "application/json", "application/xml" etc can be passed.
+* Data: This argument will be fetched data that needs to be passed to response.
+* Encode: Optional. This is a character encoding.  Defaults to `utf8`.
 
 
 #####response.getParsedFileData(path, [locals object], encode)
@@ -125,6 +121,11 @@ Visit additional documentation [here](https://github.com/justin-john/elet/blob/m
 Please have look in Elet and let me know how I can improve it. Your suggestion will be highly appreciated. If any one of you like to contribute with your ideas, please do not hesitate to
 create an [issue](https://github.com/justin-john/elet/issues) or make a [pull request](https://github.com/justin-john/elet/pulls) in repository.
 If you like to contact me, please come at <justinjohnmathews@gmail.com>.
+
+### Notes
+
+The *v0.2.0* have made change in application structure which was existed in *v0.1.x*.
+
 
 ## License
 

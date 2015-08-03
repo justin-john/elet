@@ -8,11 +8,23 @@ elet.config({
     templateEngine: 'swig', // [REQUIRED] - 'jade' or 'ejs' can be used. No Defaults settings 
     controllerDir: __dirname + '/controller', // [OPTIONAL] - Declare controller directory, defaults to "/controller"
     viewDir: __dirname + '/view', // [OPTIONAL] - Declare view directory, defaults to "/view"
+    webrootDir: __dirname + '/webroot', // [OPTIONAL] - Declare webroot directory, defaults to "/webroot"
     viewExtension: 'html' // [OPTIONAL] - Must set this property in order to use html extension in view files instead of 'swig' or 'ejs' extension.
     errorFilePath: __dirname + '/view/error.html', // [OPTIONAL] - Declare a custom error html file to override default error content
     debugMode: true // [OPTIONAL] - Errors and waring are logged, defaults to false
 });
 ```
+
+* Template Engine: This will set default javascript templating engine. Currently elet supports swig, jade and ejs.
+* Controller Directory: Set path for controller directory using this property.
+* View Directory: Set path for view directory using this property.
+* Webroot Directory: The webroot folder path is set using this property. Folder here used to holding places for
+ CSS stylesheets, images, JavaScript files etc. All files in this folder can be publicly accessed.
+* View Extension: Used to set view directory files file extensions. So `injex.swig` will be created as `index.html`.
+* Error File Path: Declare a custom error html file path to override default error content in elet.
+* Debug Mode: Errors and waring are logged, defaults to false.
+
+
 Above configs can used before elet initialisation. 
 
 ### Accessing request parameters
@@ -21,7 +33,11 @@ The request object is injected with some helpful methods and properties in elet 
 method should posses all these methods are properties. All these methods and properties are added in one property in
 request object called "params". So `request.params` can be used in action method
 ```javascript
-var _index = function(req, res) { /* "req" as request and "res" as response object arguments */ };
+var _index = function(req, res) {
+    /** "req" as request and "res" as response object arguments
+     *  "req.params" will be used in this sample code to access request parameters
+     */
+};
 ```
 The method can access req.params to get different properties in request.
 
@@ -58,12 +74,16 @@ There are several built-in detectors that you can use:
 ### Sample App Structure
 ```
   application root/
-        ├── css/
-        │   ├── bootstrap.css
-        │   └── application.css
-        ├── js/
-        │   ├── bootstrap.js
-        │   └── application.js
+        ├── webroot/
+        │   ├── images/
+        │   │   ├── logo.gif
+        │   │   └── home.png
+        │   ├── css/
+        │   │   ├── bootstrap.css
+        │   │   └── application.css
+        │   └── js/
+        │        ├── bootstrap.js
+        │        └── application.js
         ├── view/
         │   ├── articles/
         │   │   ├── index.html
@@ -86,7 +106,8 @@ var elet = require('elet');
 elet.config({
     templateEngine: 'swig',
     controllerDir: __dirname + '/controller',
-    viewsMap: __dirname + '/view',
+    viewsDir: __dirname + '/view',
+    webrootDir: __dirname + '/webroot',
     viewExtension: 'html',
     debugMode: true
 });
@@ -152,5 +173,8 @@ This controller file handles following URL's routes.
  _`/articles`_ or _`/articles/index`_:   Hit articles controller and call action method "index". The `res.render` will render html from `view/articles/index.html`.
  
  _`/articles/add`_:   Hit articles controller and call action method "add". The `res.json` will return JSON response.
- 
+
+ _`/articles/swigtojade`_:   Hit articles controller and call action method "swigtojade". The `res.render` will render
+  html from `view/articles/home.html`, but it will override default templating engine "swig" to "jade".
+
  _`/articles/contact`_:  Hit articles controller and call action method "contact". The `res.resWriteEnd` will return response with any content type. Here 'text/html' or plain html as content type.
