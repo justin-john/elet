@@ -42,7 +42,8 @@ http.createServer(function (request, response) {
 ```
 
 The elet application will listen on port 3000.
-The `elet` will use some configs to set the application. It will set config for the template engine and controller, view, webroot directory paths, custom error file path etc in application. The elet supports [swig](http://paularmstrong.github.io/swig), [jade](http://jade-lang.com/) and [ejs](http://embeddedjs.com/) template engines.
+The `elet` will use some configs to set the application. It will set config for the template engine and controller, view, webroot directory paths, custom error file path etc in application. The elet supports certain template engines like [swig](http://paularmstrong.github.io/swig), [jade](http://jade-lang.com/), [ejs](http://embeddedjs.com/) etc.
+All supported template engines are listed [here](https://github.com/justin-john/elet/blob/master/docs/home.md#supported-template-engines).
 The npm module of template engine needs to required/installed in your application. Webroot Directory serve as holding places for CSS stylesheets, images, JavaScript files etc and statically served files.
 Read more about [config](https://github.com/justin-john/elet/blob/master/docs/home.md#config) on guide.
 

@@ -5,7 +5,7 @@ Guide
 
 ```javascript
 elet.config({
-    templateEngine: 'swig', // [REQUIRED] - 'jade' or 'ejs' can be used. No Defaults settings 
+    templateEngine: 'swig', // [REQUIRED] - 'jade', 'ejs', 'hogan' etc. No Defaults settings
     controllerDir: __dirname + '/controller', // [OPTIONAL] - Declare controller directory, defaults to "/controller"
     viewDir: __dirname + '/view', // [OPTIONAL] - Declare view directory, defaults to "/view"
     webrootDir: __dirname + '/webroot', // [OPTIONAL] - Declare webroot directory, defaults to "/webroot"
@@ -15,7 +15,7 @@ elet.config({
 });
 ```
 
-* Template Engine: This will set default javascript templating engine. Currently elet supports swig, jade and ejs.
+* Template Engine: This will set default javascript templating engine.
 * Controller Directory: Set path for controller directory using this property.
 * View Directory: Set path for view directory using this property.
 * Webroot Directory: The webroot folder path is set using this property. Folder here used to holding places for
@@ -24,6 +24,13 @@ elet.config({
 * Error File Path: Declare a custom error html file path to override default error content in elet.
 * Debug Mode: Errors and waring are logged, defaults to false.
 
+#### Supported template engines
+
+* EJS         `npm install ejs`
+* Swig        `npm install swig`
+* Jade        `npm install jade`
+* Hogan       `npm install hogan.js`
+* Mustache    `npm install mustache`
 
 Above configs can used before elet initialisation. 
 
