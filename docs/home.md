@@ -24,15 +24,18 @@ elet.config({
 * Error File Path: Declare a custom error html file path to override default error content in elet.
 * Debug Mode: Errors and waring are logged, defaults to false.
 
-#### Supported template engines
+Above configs can used before elet initialisation.
 
-* EJS         `npm install ejs`
-* Swig        `npm install swig`
-* Jade        `npm install jade`
-* Hogan       `npm install hogan.js`
-* Mustache    `npm install mustache`
+##### Supported template engines
 
-Above configs can used before elet initialisation. 
+| Template Engine    |  Request Method                |
+|------------------------------|:------------------------------|
+| [EJS](http://ejs.co/)    npm install ejs                           |
+| [Swig](http://paularmstrong.github.io/swig)     | npm install swig                          |
+| [Jade](http://jade-lang.com/) | npm install jade                      |
+| [Hogan](http://twitter.github.io/hogan.js/)  | npm install hogan.js                     |
+| [Mustache](http://mustache.github.io/)  | npm install mustache                     |
+
 
 ### Accessing request parameters
 
