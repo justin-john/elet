@@ -28,12 +28,12 @@ Above configs can used before elet initialisation.
 
 ##### Supported template engines
 
-| Template Engine    |  Request Method                |
+| Template Engine    |  INSTALL                |
 |------------------------------|:------------------------------|
-| [EJS](http://ejs.co/)    npm install ejs                           |
-| [Swig](http://paularmstrong.github.io/swig)     | npm install swig                          |
+| [EJS](http://ejs.co/)         |   npm install ejs
+| [Swig](http://paularmstrong.github.io/swig)     | npm install swig     |
 | [Jade](http://jade-lang.com/) | npm install jade                      |
-| [Hogan](http://twitter.github.io/hogan.js/)  | npm install hogan.js                     |
+| [Hogan](http://twitter.github.io/hogan.js/)  | npm install hogan.js    |
 | [Mustache](http://mustache.github.io/)  | npm install mustache                     |
 
 
